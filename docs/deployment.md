@@ -35,7 +35,9 @@ The repository includes `.github/workflows/deploy-pages.yml`.
 4. Open the **Actions** tab and confirm that the deployment workflow succeeds.
 5. GitHub will show the public URL in the deployment summary and Pages settings.
 
-The workflow runs `npm ci`, `npm test`, and `npm run build` before deployment.
+The workflow installs dependencies, then runs `npm test` and `npm run build`
+before deployment. Installation happens on the Linux runner so Vite's
+platform-specific optional packages are resolved for the deployment environment.
 
 ## Other Static Hosts
 
