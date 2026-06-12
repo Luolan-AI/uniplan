@@ -1,0 +1,176 @@
+const course = (id, code, name, credits, options = {}) => ({
+  id,
+  code,
+  name,
+  credits,
+  status: "available",
+  semester: null,
+  grade: "",
+  countsTowardGpa: true,
+  offered: "every",
+  prerequisite: "",
+  ...options,
+});
+
+export const blankPlan = {
+  schemaVersion: 1,
+  profile: {
+    name: "",
+    university: "My University",
+    program: "My Degree",
+    regulation: "",
+    totalCredits: 180,
+    semesterCount: 6,
+    gradingSystem: "german",
+    language: "en",
+  },
+  modules: [
+    {
+      id: "core",
+      name: "Core modules",
+      requiredCredits: 120,
+      color: "#315b72",
+      courses: [],
+    },
+    {
+      id: "electives",
+      name: "Electives",
+      requiredCredits: 45,
+      color: "#c87941",
+      courses: [],
+    },
+    {
+      id: "thesis",
+      name: "Thesis",
+      requiredCredits: 15,
+      color: "#6c6f93",
+      courses: [],
+    },
+  ],
+};
+
+export const fauAiPlan = {
+  schemaVersion: 1,
+  profile: {
+    name: "",
+    university: "FAU Erlangen-Nürnberg",
+    program: "Artificial Intelligence B.Sc. (Tech Track)",
+    regulation: "PO 20242",
+    totalCredits: 180,
+    semesterCount: 6,
+    gradingSystem: "german",
+    language: "zh",
+  },
+  modules: [
+    {
+      id: "mandatory",
+      name: "Mandatory / Pflichtmodule",
+      requiredCredits: 90,
+      color: "#315b72",
+      courses: [
+        course("fau-m-47598", "47598", "Algorithms, programming, and data representation", 10, { status: "planned", semester: 1, offered: "winter" }),
+        course("fau-m-65714", "65714", "Mathematics for data science 1", 10, { status: "planned", semester: 1, offered: "winter" }),
+        course("fau-m-92405", "92405", "Artificial Intelligence Perspectives", 5, { status: "planned", semester: 1, offered: "winter" }),
+        course("fau-m-92401", "92401", "Data Engineering", 5, { status: "planned", semester: 2, offered: "summer", prerequisite: "Algorithms and Mathematics 1 recommended" }),
+        course("fau-m-applied-programming", "TBD-AP", "Applied Programming", 5, { status: "planned", semester: 2, offered: "summer", prerequisite: "Programming fundamentals recommended" }),
+        course("fau-m-65724", "65724", "Mathematics for data science 2", 10, { status: "planned", semester: 2, offered: "summer", prerequisite: "Mathematics for data science 1" }),
+        course("fau-m-92403", "92403", "Computational Complexity", 7.5, { status: "planned", semester: 3, offered: "winter" }),
+        course("fau-m-93097", "93097", "Introduction to software engineering", 5, { status: "planned", semester: 3, offered: "winter" }),
+        course("fau-m-92406", "92406", "Artificial Intelligence Fundamentals 1", 5, { status: "planned", semester: 3, offered: "winter" }),
+        course("fau-m-92407", "92407", "Logic and Symbolic Artificial Intelligence", 7.5, { status: "planned", semester: 3, offered: "winter" }),
+        course("fau-m-probability", "TBD-PSP", "Probability and Stochastic Processes", 5, { status: "planned", semester: 4, offered: "summer" }),
+        course("fau-m-ai-fund-2", "TBD-AIF2", "Artificial Intelligence Fundamentals 2", 10, { status: "planned", semester: 4, offered: "summer" }),
+        course("fau-m-92409", "92409", "Ethics and Philosophy of AI", 5, { status: "planned", semester: 4, offered: "summer" }),
+      ],
+    },
+    {
+      id: "free-choice",
+      name: "Free Choice / Freier Wahlbereich",
+      requiredCredits: 10,
+      color: "#7a8f63",
+      courses: [
+        course("fau-free-1", "FREE-1", "Language course or soft skill 1", 5),
+        course("fau-free-2", "FREE-2", "Language course or soft skill 2", 5),
+      ],
+    },
+    {
+      id: "application-domain",
+      name: "Application Domain / Anwendungsfach",
+      requiredCredits: 20,
+      color: "#c87941",
+      courses: [
+        course("fau-app-96010", "96010", "Architectures for digital signal processing", 5, { offered: "summer" }),
+        course("fau-app-92776", "92776", "Fundamentals of electrical engineering", 5, { offered: "summer" }),
+        course("fau-app-62768", "62768", "Physics II", 5, { offered: "summer" }),
+        course("fau-app-92411", "92411", "Introduction to Molecular Biology", 5, { offered: "summer" }),
+        course("fau-app-122337", "122337", "Magnetic resonance imaging 1", 5, { offered: "winter" }),
+        course("fau-app-62766", "62766", "Physics I", 5, { offered: "winter" }),
+        course("fau-app-92412", "92412", "Neuroanatomy and Neurophysiology", 5, { offered: "winter" }),
+        course("fau-app-85603", "85603", "Analysis of macroeconomic and financial markets data", 5, { offered: "winter" }),
+        course("fau-app-87017", "87017", "Data collection methods in social and behavioral sciences", 5),
+        course("fau-app-87005", "87005", "Electronic human resource management", 5, { prerequisite: "English C1" }),
+        course("fau-app-94920", "94920", "International supply chain management", 5),
+        course("fau-app-57134", "57134", "People analytics", 5, { prerequisite: "Python or R recommended" }),
+      ],
+    },
+    {
+      id: "ai-electives",
+      name: "AI Electives / KI-Wahlpflicht",
+      requiredCredits: 30,
+      color: "#8a5c76",
+      courses: [
+        course("fau-aie-47544", "47544", "Applied data science in medicine and psychology", 5, { offered: "summer" }),
+        course("fau-aie-44200", "44200", "Computational neurotechnology", 5, { offered: "summer" }),
+        course("fau-aie-645618", "645618", "Human computer interaction", 5, { offered: "summer" }),
+        course("fau-aie-47616", "47616", "Intent detection and feedback", 5, { offered: "summer" }),
+        course("fau-aie-93340", "93340", "Introduction to network science", 5, { offered: "summer" }),
+        course("fau-aie-93101", "93101", "AI in medical robotics", 5, { offered: "winter" }),
+        course("fau-aie-47678", "47678", "Algorithmic Bioinformatics", 5, { offered: "winter" }),
+        course("fau-aie-47587", "47587", "Best practices in open science", 5, { offered: "winter" }),
+        course("fau-aie-93109", "93109", "Computational magnetic resonance imaging", 5, { offered: "winter" }),
+        course("fau-aie-47582", "47582", "Systems immunology and infectiology", 5, { offered: "winter" }),
+      ],
+    },
+    {
+      id: "ai-seminar",
+      name: "AI Seminar",
+      requiredCredits: 5,
+      color: "#4e7d76",
+      courses: [
+        course("fau-sem-47704", "47704", "Digitalization in Clinical Psychology", 5, { offered: "summer" }),
+        course("fau-sem-47673", "47673", "Network medicine", 5, { offered: "winter" }),
+        course("fau-sem-93113", "93113", "Humans in the loop: Interactive AI", 5, { offered: "winter" }),
+        course("fau-sem-47619", "47619", "Seminar: Machine learning in MRI", 5),
+      ],
+    },
+    {
+      id: "ai-project",
+      name: "AI Project",
+      requiredCredits: 10,
+      color: "#b78c45",
+      courses: [
+        course("fau-project-43932", "43932", "Computational imaging project", 10, { offered: "summer" }),
+        course("fau-project-47629", "47629", "Project: Neurotechnology", 10),
+        course("fau-project-924553", "924553", "Project machine learning and data analytics", 10),
+        course("fau-project-93112", "93112", "Project: Representation learning", 10),
+        course("fau-project-47594", "47594", "Research project: Surgical robotics", 10),
+      ],
+    },
+    {
+      id: "thesis",
+      name: "Bachelor's Thesis / Bachelorarbeit",
+      requiredCredits: 15,
+      color: "#6c6f93",
+      courses: [
+        course("fau-thesis", "THESIS", "Bachelor's thesis", 15, { prerequisite: "Recommended after at least 120 ECTS" }),
+      ],
+    },
+  ],
+};
+
+export const clonePlan = (plan) => structuredClone(plan);
+
+export const templates = [
+  { id: "blank", titleKey: "blankTemplate", plan: blankPlan },
+  { id: "fau-ai", titleKey: "fauTemplate", plan: fauAiPlan },
+];
